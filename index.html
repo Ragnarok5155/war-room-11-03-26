@@ -230,42 +230,24 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .footer-brand{font-family:var(--display);font-size:2.5rem;letter-spacing:.05em;color:var(--amber);margin-bottom:1rem}
 .footer-disclaimer{font-family:var(--mono);font-size:.62rem;color:var(--gray-mid);line-height:1.7;max-width:700px;letter-spacing:.02em}
 
-/* ── LIVE DATA SYSTEM ── */
-.live-bar{position:fixed;bottom:0;left:0;right:0;z-index:700;background:rgba(6,8,11,0.97);backdrop-filter:blur(14px);border-top:1px solid var(--border-mid);padding:0 5vw;height:40px;display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:.58rem;overflow:hidden}
-.live-bar-label{color:var(--amber);letter-spacing:.14em;text-transform:uppercase;flex-shrink:0;font-size:.55rem}
-.live-ticker-wrap{display:flex;gap:0;flex:1;overflow:hidden;position:relative}
-.live-ticker-scroll{display:flex;gap:28px;animation:tickerScroll 40s linear infinite;white-space:nowrap}
-.live-ticker-scroll:hover{animation-play-state:paused}
-@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.lt-item{display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
-.lt-sym{color:var(--amber-dim);letter-spacing:.06em}
-.lt-price{color:var(--white);font-weight:600}
-.lt-chg.up{color:var(--green)}.lt-chg.dn{color:var(--red)}.lt-chg.neu{color:var(--gray-light)}
-.lt-sep{color:var(--border-bright);margin:0 4px}
-.live-refresh-btn{flex-shrink:0;background:transparent;border:1px solid var(--border-mid);color:var(--gray-light);font-family:var(--mono);font-size:.53rem;letter-spacing:.1em;padding:4px 11px;cursor:pointer;text-transform:uppercase;transition:all .2s;display:flex;align-items:center;gap:5px}
+/* ── LIVE DATA SYSTEM — 4 ACTIVOS CRÍTICOS ── */
+.live-bar{position:fixed;bottom:0;left:0;right:0;z-index:700;background:rgba(6,8,11,0.97);backdrop-filter:blur(14px);border-top:1px solid var(--border-mid);padding:0 5vw;height:44px;display:flex;align-items:center;gap:20px}
+.live-4{display:flex;gap:1px;flex:1;background:var(--border)}
+.live-cell{flex:1;background:var(--bg2);padding:0 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.lc-label{font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;color:var(--amber-dim);text-transform:uppercase;flex-shrink:0}
+.lc-right{display:flex;align-items:baseline;gap:7px;min-width:0}
+.lc-price{font-family:var(--mono);font-size:.82rem;font-weight:600;color:var(--white)}
+.lc-chg{font-family:var(--mono);font-size:.58rem;font-weight:600}
+.lc-chg.up{color:var(--green)}.lc-chg.dn{color:var(--red)}.lc-chg.neu{color:var(--gray-light)}
+.live-bar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.live-ts{font-family:var(--mono);font-size:.5rem;color:var(--gray-mid);letter-spacing:.08em}
+.live-refresh-btn{background:transparent;border:1px solid var(--border-mid);color:var(--gray-light);font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;padding:5px 13px;cursor:pointer;text-transform:uppercase;transition:all .2s;white-space:nowrap}
 .live-refresh-btn:hover{border-color:var(--amber);color:var(--amber)}
-.live-refresh-btn.loading{opacity:.5;pointer-events:none}
-.live-status{flex-shrink:0;font-size:.52rem;letter-spacing:.1em;display:flex;align-items:center;gap:5px}
-.live-status.ok{color:var(--green)}.live-status.err{color:var(--red)}.live-status.loading{color:var(--amber)}
+.live-refresh-btn:disabled{opacity:.4;cursor:default}
 .spin{display:inline-block;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* live data injected into existing elements */
-.hs-val[data-live],.d11-new[data-live]{transition:color .3s}
-.live-updated{animation:flashAmber .6s ease}
-@keyframes flashAmber{0%{background:rgba(245,166,35,0.18)}100%{background:transparent}}
-
-/* LIVE DATA PANEL */
-.live-data-panel{background:var(--bg2);border:1px solid var(--border-mid);border-left:3px solid var(--amber);padding:1.2rem 1.4rem;margin:1.5rem 0;display:none}
-.live-data-panel.show{display:block}
-.ldp-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;justify-content:space-between}
-.ldp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
-.ldp-item{background:var(--bg3);padding:.7rem .8rem;border:1px solid var(--border)}
-.ldp-sym{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;color:var(--amber-dim);text-transform:uppercase;margin-bottom:3px}
-.ldp-price{font-family:var(--mono);font-size:.92rem;font-weight:600;color:var(--white)}
-.ldp-chg{font-family:var(--mono);font-size:.58rem;margin-top:2px}
-.ldp-chg.up{color:var(--green)}.ldp-chg.dn{color:var(--red)}.ldp-chg.neu{color:var(--gray-light)}
-.ldp-note{font-family:var(--mono);font-size:.5rem;color:var(--gray-mid);margin-top:3px}
+.live-err{font-family:var(--mono);font-size:.52rem;color:var(--red);display:none}
+@media(max-width:640px){.lc-label{display:none}.live-ts{display:none}}
 </style>
 </head>
 <body>
@@ -293,16 +275,31 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </ul>
 </nav>
 
-<!-- LIVE DATA BAR (bottom ticker) -->
+<!-- LIVE DATA BAR — 4 activos críticos -->
 <div class="live-bar" id="liveBar">
-  <span class="live-bar-label">▶ LIVE</span>
-  <div class="live-ticker-wrap">
-    <div class="live-ticker-scroll" id="tickerScroll">
-      <span class="lt-item"><span class="lt-sym">CARGANDO DATOS</span><span class="lt-price">···</span></span>
+  <div class="live-4">
+    <div class="live-cell" id="lc-wti">
+      <span class="lc-label">WTI</span>
+      <div class="lc-right"><span class="lc-price">—</span><span class="lc-chg neu">···</span></div>
+    </div>
+    <div class="live-cell" id="lc-oro">
+      <span class="lc-label">Oro</span>
+      <div class="lc-right"><span class="lc-price">—</span><span class="lc-chg neu">···</span></div>
+    </div>
+    <div class="live-cell" id="lc-vix">
+      <span class="lc-label">VIX</span>
+      <div class="lc-right"><span class="lc-price">—</span><span class="lc-chg neu">···</span></div>
+    </div>
+    <div class="live-cell" id="lc-sp">
+      <span class="lc-label">S&amp;P 500</span>
+      <div class="lc-right"><span class="lc-price">—</span><span class="lc-chg neu">···</span></div>
     </div>
   </div>
-  <div class="live-status loading" id="liveStatus"><span class="spin">◌</span>&nbsp;actualizando</div>
-  <button class="live-refresh-btn" id="refreshBtn" onclick="fetchLiveData()">↻ REFRESH</button>
+  <div class="live-bar-right">
+    <span class="live-ts" id="liveTs"></span>
+    <span class="live-err" id="liveErr">sin datos · revisá conexión</span>
+    <button class="live-refresh-btn" id="refreshBtn" onclick="fetchLiveData()"><span id="refreshIcon">↻</span> REFRESH</button>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -385,17 +382,6 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <section class="section" id="delta">
   <div class="sec-label">Comparativa 3 días</div>
   <h2 class="sec-title">9 → 10 → 11 MARZO</h2>
-
-  <!-- LIVE DATA PANEL -->
-  <div class="live-data-panel show" id="liveDataPanel">
-    <div class="ldp-title">
-      <span>PRECIOS EN TIEMPO REAL <span style="color:var(--gray-mid);font-size:.5rem">(activos con ticker bursátil · datos macro son publicaciones fijas)</span></span>
-      <span id="ldpTimestamp" style="color:var(--gray-mid);font-size:.52rem"></span>
-    </div>
-    <div class="ldp-grid" id="ldpGrid">
-      <!-- injected by JS -->
-    </div>
-  </div>
 
   <div class="delta11-band">
     <div class="d11-title">EVOLUCIÓN 96H · 8 → 9 → 10 → 11 Marzo</div>
@@ -935,146 +921,91 @@ function updateTime(){
 }
 updateTime(); setInterval(updateTime,30000);
 
-// ─── LIVE DATA SYSTEM ────────────────────────────────────
-// Activos con ticker Yahoo Finance
-const LIVE_ASSETS = [
-  { sym: 'BZ=F',   label: 'Brent',    fmt: 'price',  prefix: '$',  decimals: 2 },
-  { sym: 'CL=F',   label: 'WTI',      fmt: 'price',  prefix: '$',  decimals: 2 },
-  { sym: 'GC=F',   label: 'Oro',      fmt: 'price',  prefix: '$',  decimals: 0 },
-  { sym: '^GSPC',  label: 'S&P 500',  fmt: 'price',  prefix: '',   decimals: 0 },
-  { sym: '^NDX',   label: 'Nasdaq',   fmt: 'price',  prefix: '',   decimals: 0 },
-  { sym: '^VIX',   label: 'VIX',      fmt: 'price',  prefix: '',   decimals: 2 },
-  { sym: 'DX-Y.NYB', label: 'DXY',   fmt: 'price',  prefix: '',   decimals: 3 },
-  { sym: 'BTC-USD', label: 'BTC',     fmt: 'price',  prefix: '$',  decimals: 0 },
-  { sym: 'HYG',    label: 'HYG',      fmt: 'price',  prefix: '$',  decimals: 2 },
-  { sym: '^TNX',   label: 'US10Y',    fmt: 'pct',    prefix: '',   decimals: 3 },
-  { sym: '^TYX',   label: 'US30Y',    fmt: 'pct',    prefix: '',   decimals: 3 },
-  { sym: '^IRX',   label: 'T-Bill 3M',fmt: 'pct',    prefix: '',   decimals: 3 },
-  { sym: 'NG=F',   label: 'NGAS',     fmt: 'price',  prefix: '$',  decimals: 3 },
+// ─── LIVE DATA — 4 ACTIVOS CRÍTICOS ─────────────────────
+// WTI · Oro · VIX · S&P 500  (Yahoo Finance vía CORS proxy)
+const CORE_ASSETS = [
+  { id: 'lc-wti', sym: 'CL=F',  label: 'WTI',     prefix: '$', dec: 2, pct: false },
+  { id: 'lc-oro', sym: 'GC=F',  label: 'Oro',     prefix: '$', dec: 0, pct: false },
+  { id: 'lc-vix', sym: '^VIX',  label: 'VIX',     prefix: '',  dec: 2, pct: false },
+  { id: 'lc-sp',  sym: '^GSPC', label: 'S&P 500', prefix: '',  dec: 0, pct: false },
 ];
 
-// Proxy CORS para Yahoo Finance (gratuito, no requiere API key)
-const YF_PROXY = 'https://query1.finance.yahoo.com/v8/finance/chart/';
-const CORS_PROXY = 'https://corsproxy.io/?';
+const PROXY = 'https://corsproxy.io/?';
+const YF    = 'https://query1.finance.yahoo.com/v8/finance/chart/';
 
-let liveData = {};
-let lastFetch = null;
+async function fetchOne(sym) {
+  const url = PROXY + encodeURIComponent(YF + sym + '?interval=1d&range=2d');
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(r.status);
+  const d = await r.json();
+  const meta = d?.chart?.result?.[0]?.meta;
+  if (!meta) throw new Error('no meta');
+  const price  = meta.regularMarketPrice;
+  const prev   = meta.chartPreviousClose ?? meta.previousClose;
+  const chgPct = prev ? ((price - prev) / prev) * 100 : 0;
+  return { price, chgPct };
+}
 
-async function fetchSingle(asset) {
-  const url = CORS_PROXY + encodeURIComponent(YF_PROXY + asset.sym + '?interval=1d&range=5d');
-  try {
-    const r = await fetch(url, { headers: { 'Accept': 'application/json' } });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const d = await r.json();
-    const meta = d?.chart?.result?.[0]?.meta;
-    if (!meta) throw new Error('no meta');
-    const price = meta.regularMarketPrice ?? meta.previousClose;
-    const prev  = meta.chartPreviousClose ?? meta.previousClose;
-    const chgAbs = price - prev;
-    const chgPct = prev ? (chgAbs / prev) * 100 : 0;
-    return { price, chgAbs, chgPct, prev, ok: true };
-  } catch(e) {
-    return { ok: false, error: e.message };
+function setCell(id, asset, data, ok) {
+  const cell = document.getElementById(id);
+  if (!cell) return;
+  const priceEl = cell.querySelector('.lc-price');
+  const chgEl   = cell.querySelector('.lc-chg');
+  if (!ok || !data) {
+    priceEl.textContent = '—';
+    chgEl.textContent   = 'error';
+    chgEl.className     = 'lc-chg neu';
+    return;
   }
+  const priceStr = asset.prefix + data.price.toLocaleString('en-US', {
+    minimumFractionDigits: asset.dec,
+    maximumFractionDigits: asset.dec
+  });
+  const sign   = data.chgPct >= 0 ? '+' : '';
+  const chgStr = sign + data.chgPct.toFixed(2) + '%';
+  const cls    = data.chgPct > 0.05 ? 'up' : data.chgPct < -0.05 ? 'dn' : 'neu';
+
+  priceEl.textContent = priceStr;
+  chgEl.textContent   = chgStr;
+  chgEl.className     = 'lc-chg ' + cls;
+
+  // Flash de actualización
+  cell.style.background = 'rgba(245,166,35,0.07)';
+  setTimeout(() => cell.style.background = '', 600);
 }
 
 async function fetchLiveData() {
-  const btn = document.getElementById('refreshBtn');
-  const status = document.getElementById('liveStatus');
-  if (btn) { btn.classList.add('loading'); btn.textContent = '↻ ...'; }
-  if (status) status.innerHTML = '<span class="spin">◌</span>&nbsp;actualizando';
+  const btn  = document.getElementById('refreshBtn');
+  const icon = document.getElementById('refreshIcon');
+  const ts   = document.getElementById('liveTs');
+  const err  = document.getElementById('liveErr');
 
-  const results = await Promise.allSettled(LIVE_ASSETS.map(a => fetchSingle(a)));
+  if (btn)  btn.disabled = true;
+  if (icon) icon.innerHTML = '<span class="spin">◌</span>';
 
-  let successCount = 0;
-  results.forEach((r, i) => {
-    const asset = LIVE_ASSETS[i];
-    if (r.status === 'fulfilled' && r.value.ok) {
-      liveData[asset.sym] = { ...asset, ...r.value };
-      successCount++;
-    }
-  });
+  let anyOk = false;
 
-  lastFetch = new Date();
-  renderLiveData();
-
-  if (btn) { btn.classList.remove('loading'); btn.textContent = '↻ REFRESH'; }
-  if (status) {
-    if (successCount > 0) {
-      status.className = 'live-status ok';
-      status.innerHTML = '● ' + successCount + '/' + LIVE_ASSETS.length + ' activos';
-    } else {
-      status.className = 'live-status err';
-      status.innerHTML = '✕ sin datos';
-    }
-  }
-}
-
-function fmtVal(asset, data) {
-  if (!data) return '—';
-  if (asset.fmt === 'pct') return data.price.toFixed(asset.decimals) + '%';
-  return asset.prefix + data.price.toLocaleString('en-US', { minimumFractionDigits: asset.decimals, maximumFractionDigits: asset.decimals });
-}
-
-function fmtChg(data) {
-  if (!data || data.chgPct === undefined) return { text: '—', cls: 'neu' };
-  const sign = data.chgPct >= 0 ? '+' : '';
-  return {
-    text: sign + data.chgPct.toFixed(2) + '%',
-    cls: data.chgPct > 0.05 ? 'up' : data.chgPct < -0.05 ? 'dn' : 'neu'
-  };
-}
-
-function renderLiveData() {
-  // ─── TICKER BAR ───────────────────────────────────────
-  const tickerEl = document.getElementById('tickerScroll');
-  if (tickerEl) {
-    const items = LIVE_ASSETS.filter(a => liveData[a.sym]?.ok);
-    if (items.length > 0) {
-      // duplicate for seamless loop
-      let html = '';
-      for (let pass = 0; pass < 2; pass++) {
-        items.forEach(asset => {
-          const d = liveData[asset.sym];
-          const chg = fmtChg(d);
-          html += `<span class="lt-item">
-            <span class="lt-sym">${asset.label}</span>
-            <span class="lt-price">${fmtVal(asset, d)}</span>
-            <span class="lt-chg ${chg.cls}">${chg.text}</span>
-          </span><span class="lt-sep">·</span>`;
-        });
+  await Promise.allSettled(
+    CORE_ASSETS.map(async asset => {
+      try {
+        const data = await fetchOne(asset.sym);
+        setCell(asset.id, asset, data, true);
+        anyOk = true;
+      } catch(e) {
+        setCell(asset.id, asset, null, false);
       }
-      tickerEl.innerHTML = html;
-    }
-  }
+    })
+  );
 
-  // ─── LIVE DATA PANEL (tabla detalle) ──────────────────
-  const grid = document.getElementById('ldpGrid');
-  const ts = document.getElementById('ldpTimestamp');
-  if (ts && lastFetch) {
-    ts.textContent = 'Actualizado: ' + lastFetch.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }) + ' hora local';
-  }
-  if (grid) {
-    const items = LIVE_ASSETS.filter(a => liveData[a.sym]?.ok);
-    if (items.length === 0) {
-      grid.innerHTML = '<div style="font-family:var(--mono);font-size:.62rem;color:var(--red);grid-column:1/-1">No se pudieron cargar datos. Verificá tu conexión o hacé click en REFRESH.</div>';
-      return;
-    }
-    grid.innerHTML = items.map(asset => {
-      const d = liveData[asset.sym];
-      const chg = fmtChg(d);
-      const note = asset.fmt === 'pct' ? 'yield' : 'precio spot';
-      return `<div class="ldp-item">
-        <div class="ldp-sym">${asset.label}</div>
-        <div class="ldp-price">${fmtVal(asset, d)}</div>
-        <div class="ldp-chg ${chg.cls}">${chg.text} hoy</div>
-        <div class="ldp-note">${note} · Yahoo Finance</div>
-      </div>`;
-    }).join('');
-  }
+  const now = new Date();
+  const hhmm = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+  if (ts)  ts.textContent  = 'actualizado ' + hhmm;
+  if (err) err.style.display = anyOk ? 'none' : 'block';
+  if (btn)  btn.disabled = false;
+  if (icon) icon.textContent = '↻';
 }
 
-// Auto-fetch on load, then every 5 minutes
+// Carga al abrir + refresco automático cada 5 min
 document.addEventListener('DOMContentLoaded', () => {
   buildAllCharts();
   fetchLiveData();
