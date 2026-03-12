@@ -22,44 +22,17 @@
   --body:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight:300;overflow-x:hidden}
+body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight:300;overflow-x:hidden;padding-bottom:40px}
 body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.07) 2px,rgba(0,0,0,0.07) 4px);pointer-events:none;z-index:9999}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--amber-dim)}
 
-/* ══ SCROLL PROGRESS BAR ══ */
-#progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--amber),var(--red));z-index:9998;transition:width .1s linear;pointer-events:none}
-
-/* ══ SECTION DOTS ══ */
-#section-dots{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:10px}
-.s-dot{width:6px;height:6px;border-radius:50%;background:var(--gray-mid);border:1px solid var(--gray-mid);cursor:pointer;transition:all .25s;position:relative}
-.s-dot.active{background:var(--amber);border-color:var(--amber);transform:scale(1.6)}
-.s-dot:hover{background:var(--amber-dim);border-color:var(--amber)}
-.s-dot-tip{position:absolute;right:16px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;color:var(--amber);background:rgba(6,8,11,0.96);border:1px solid var(--border-mid);padding:3px 9px;opacity:0;pointer-events:none;transition:opacity .2s;text-transform:uppercase}
-.s-dot:hover .s-dot-tip{opacity:1}
-@media(max-width:768px){#section-dots{display:none}}
-
-/* ══ STICKY MARKET PULSE ══ */
-#market-pulse{position:fixed;bottom:0;left:0;right:0;z-index:450;background:rgba(6,8,11,0.97);border-top:1px solid var(--border-mid);backdrop-filter:blur(16px);display:flex;align-items:center;height:38px;overflow:hidden;transform:translateY(100%);transition:transform .4s ease}
-#market-pulse.show{transform:translateY(0)}
-.pulse-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;color:var(--amber-dim);padding:0 14px;text-transform:uppercase;flex-shrink:0;border-right:1px solid var(--border)}
-.pulse-items{display:flex;flex:1;overflow:hidden}
-.pulse-item{display:flex;align-items:center;gap:7px;padding:0 16px;border-right:1px solid var(--border);flex-shrink:0}
-.pulse-ticker{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;color:var(--gray-light);text-transform:uppercase}
-.pulse-val{font-family:var(--mono);font-size:.62rem;font-weight:600}
-.pulse-val.r{color:var(--red)}.pulse-val.g{color:var(--green)}.pulse-val.a{color:var(--amber)}
-.pulse-delta{font-family:var(--mono);font-size:.5rem}
-.pulse-delta.dn{color:var(--red)}.pulse-delta.up{color:var(--green)}.pulse-delta.neu{color:var(--gray-light)}
-.pulse-alert{margin-left:auto;padding:0 16px;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;color:var(--red);flex-shrink:0}
-@media(max-width:640px){.pulse-items .pulse-item:nth-child(n+4){display:none}}
-
 /* UPDATE RIBBON */
-.update-ribbon{background:linear-gradient(90deg,rgba(232,64,64,0.18),rgba(232,64,64,0.06),rgba(245,166,35,0.08));border-bottom:1px solid rgba(232,64,64,0.5);padding:0 5vw;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;position:fixed;top:0;left:0;right:0;z-index:600;height:34px;overflow:hidden}
+.update-ribbon{background:linear-gradient(90deg,rgba(232,64,64,0.18),rgba(232,64,64,0.06),rgba(245,166,35,0.08));border-bottom:1px solid rgba(232,64,64,0.5);padding:7px 5vw;display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;position:fixed;top:0;left:0;right:0;z-index:600;height:34px}
 .ribbon-badge{background:var(--red);color:#fff;font-weight:700;padding:2px 11px;letter-spacing:.12em;font-size:.58rem;flex-shrink:0}
-.ribbon-text{color:rgba(232,64,64,0.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
-.ribbon-days{margin-left:auto;display:flex;gap:6px;flex-shrink:0}
-.rd{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;padding:2px 9px;border:1px solid var(--border);color:var(--gray-light);white-space:nowrap}
+.ribbon-text{color:rgba(232,64,64,0.85)}
+.ribbon-days{margin-left:auto;display:flex;gap:8px}
+.rd{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;padding:2px 9px;border:1px solid var(--border);color:var(--gray-light)}
 .rd.current{border-color:var(--amber);color:var(--amber);background:rgba(245,166,35,0.06)}
-@media(max-width:600px){.ribbon-text{display:none}.rd:not(.current){display:none}.ribbon-days{margin-left:8px}}
 
 /* NAV */
 .nav{position:fixed;top:34px;left:0;right:0;z-index:500;background:rgba(6,8,11,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-mid);height:52px;display:flex;align-items:center;padding:0 5vw;justify-content:space-between}
@@ -68,8 +41,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .live-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:blink 1s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
 .nav-links{display:flex;gap:1.5rem;list-style:none}
-.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;color:var(--gray-light);text-decoration:none;text-transform:uppercase;transition:color .2s,border-color .2s;padding-bottom:3px;border-bottom:1px solid transparent}
-.nav-links a:hover,.nav-links a.active{color:var(--amber);border-bottom-color:var(--amber)}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;color:var(--gray-light);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--amber)}
 @media(max-width:700px){.nav-links{display:none}}
 
 /* HERO */
@@ -89,21 +62,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .hero-title .day{color:var(--red)}.hero-title .label{color:var(--white)}
 .hero-sub{font-family:var(--cond);font-size:clamp(.9rem,2.2vw,1.6rem);font-weight:300;letter-spacing:.12em;color:var(--gray-light);text-transform:uppercase;margin:.5rem 0 2.5rem;animation:fadeUp .6s .18s ease both}
 .hero-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1px;background:var(--border-mid);border:1px solid var(--border-mid);animation:fadeUp .7s .25s ease both}
-.hs{background:var(--bg2);padding:1rem 1.2rem;transition:background .2s;cursor:default}
-.hs:hover{background:var(--bg3)}
+.hs{background:var(--bg2);padding:1rem 1.2rem}
 .hs-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;color:var(--amber-dim);text-transform:uppercase;margin-bottom:5px}
 .hs-val{font-family:var(--mono);font-size:1.05rem;font-weight:600}
 .hs-val.r{color:var(--red)}.hs-val.g{color:var(--green)}.hs-val.a{color:var(--amber)}.hs-val.w{color:var(--white)}.hs-val.s{color:var(--silver)}
 .hs-delta{font-size:.66rem;margin-top:3px}
 .hs-delta.up{color:var(--green)}.hs-delta.dn{color:var(--red)}.hs-delta.neu{color:var(--gray-light)}
 .hs-prev{font-family:var(--mono);font-size:.52rem;color:var(--gray-mid);margin-top:2px}
-/* Hero scroll CTA */
-.hero-cta{display:inline-flex;align-items:center;gap:10px;margin-top:2rem;animation:fadeUp .8s .35s ease both;cursor:pointer}
-.hero-cta-txt{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;color:var(--gray-light);text-transform:uppercase;transition:color .2s}
-.hero-cta:hover .hero-cta-txt{color:var(--amber)}
-.hero-cta-arr{width:28px;height:28px;border:1px solid var(--border-mid);display:flex;align-items:center;justify-content:center;transition:border-color .2s;animation:bounce-arr 1.8s ease-in-out infinite}
-.hero-cta:hover .hero-cta-arr{border-color:var(--amber)}
-@keyframes bounce-arr{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
 /* SECTIONS */
@@ -114,8 +79,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .sec-title{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);line-height:1;letter-spacing:.03em;color:var(--white);margin-bottom:1.8rem}
 
 /* ── INTERACTIVE CHART ENGINE ── */
-.ichart-container{background:var(--bg2);border:1px solid var(--border);margin-bottom:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.ichart-container:hover{border-color:var(--border-mid);box-shadow:0 0 0 1px rgba(245,166,35,0.05)}
+.ichart-container{background:var(--bg2);border:1px solid var(--border);margin-bottom:14px;overflow:hidden}
 .ichart-header{padding:1.1rem 1.4rem .6rem;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border)}
 .ichart-title{font-family:var(--cond);font-size:.92rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--white)}
 .ichart-sub{font-family:var(--mono);font-size:.58rem;color:var(--gray-light);margin-top:2px}
@@ -155,14 +119,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .chart-tabs{display:flex;gap:7px;margin-bottom:1.2rem;flex-wrap:wrap}
 .ctab{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;padding:5px 14px;border:1px solid var(--border-mid);background:transparent;color:var(--gray-light);cursor:pointer;text-transform:uppercase;transition:all .2s}
 .ctab.active{background:var(--amber);color:#000;border-color:var(--amber);font-weight:600}
-.ctab:hover:not(.active){border-color:var(--amber-dim);color:var(--white)}
 
 /* DELTA COMPARATIVA TABLE */
 .comp-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.77rem}
 .comp-table thead tr{background:rgba(245,166,35,0.07);border-bottom:1px solid var(--border-mid)}
 .comp-table th{padding:10px 12px;text-align:left;font-size:.57rem;letter-spacing:.18em;color:var(--amber-dim);text-transform:uppercase;font-weight:600}
-.comp-table td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle;transition:background .15s}
-.comp-table tr:hover td{background:rgba(245,166,35,0.04)}
+.comp-table td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle}
+.comp-table tr:hover td{background:rgba(245,166,35,0.03)}
 .t-ticker{color:var(--amber);font-weight:600;letter-spacing:.05em;font-size:.74rem}
 .t-pos{color:var(--green)}.t-neg{color:var(--red)}.t-neu{color:var(--gray-light)}.t-val{color:var(--white)}
 .dc{display:inline-flex;align-items:center;gap:3px;font-size:.62rem;font-weight:600;padding:2px 7px;border-radius:2px;letter-spacing:.05em}
@@ -176,8 +139,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .delta11-band{background:linear-gradient(135deg,rgba(232,64,64,0.06),rgba(245,166,35,0.03));border:1px solid rgba(232,64,64,0.22);padding:1.8rem 2rem;margin:1.5rem 0}
 .d11-title{font-family:var(--display);font-size:1.7rem;color:var(--red);letter-spacing:.05em;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
 .delta11-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px}
-.d11{background:var(--bg4);padding:.9rem 1rem;border:1px solid var(--border);position:relative;transition:border-color .2s,background .2s}
-.d11:hover{border-color:var(--border-mid);background:var(--bg3)}
+.d11{background:var(--bg4);padding:.9rem 1rem;border:1px solid var(--border);position:relative}
 .d11-name{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;color:var(--gray-light);text-transform:uppercase;margin-bottom:5px}
 .d11-vals{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
 .d11-d9{font-family:var(--mono);font-size:.62rem;color:var(--gray-mid);text-decoration:line-through}
@@ -200,9 +162,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
 /* CONTRADICCIONES */
 .contra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:1.5rem}
-.contra-card{background:var(--bg2);border:1px solid var(--border);padding:1.5rem 1.7rem;position:relative;overflow:hidden;transition:border-color .25s,transform .2s,box-shadow .25s;cursor:default}
-.contra-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
-.contra-card.danger:hover{border-color:rgba(232,64,64,0.3)}.contra-card.warn:hover{border-color:rgba(245,166,35,0.3)}.contra-card.opp:hover{border-color:rgba(0,214,143,0.3)}
+.contra-card{background:var(--bg2);border:1px solid var(--border);padding:1.5rem 1.7rem;position:relative;overflow:hidden}
 .contra-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .contra-card.danger::before{background:var(--red)}.contra-card.warn::before{background:var(--amber)}.contra-card.opp::before{background:var(--green)}
 .contra-num{font-family:var(--display);font-size:4rem;color:rgba(245,166,35,0.05);position:absolute;top:.5rem;right:1rem;line-height:1}
@@ -213,26 +173,17 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
 /* SEMAFORO */
 .sem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:9px;margin-top:1.3rem}
-.sem-card{background:var(--bg2);border:1px solid var(--border);padding:1.1rem 1.3rem;display:flex;align-items:flex-start;gap:12px;transition:background .2s,border-color .2s,transform .15s;cursor:default}
-.sem-card:hover{background:var(--bg3);transform:translateX(2px)}
+.sem-card{background:var(--bg2);border:1px solid var(--border);padding:1.1rem 1.3rem;display:flex;align-items:flex-start;gap:11px;transition:background .2s}
+.sem-card:hover{background:var(--bg3)}
 .sem-card.g{border-left:3px solid var(--green)}.sem-card.y{border-left:3px solid var(--yellow)}.sem-card.r{border-left:3px solid var(--red)}
-.sem-card.g:hover{border-color:rgba(0,214,143,0.35)}.sem-card.y:hover{border-color:rgba(240,192,64,0.35)}.sem-card.r:hover{border-color:rgba(232,64,64,0.35)}
-/* SVG signal dot replacing emoji */
-.sem-sig{width:20px;height:20px;flex-shrink:0;margin-top:2px}
-/* Semáforo filter */
-.sem-filter{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
-.sfbtn{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;padding:4px 12px;border:1px solid var(--border-mid);background:transparent;color:var(--gray-light);cursor:pointer;text-transform:uppercase;transition:all .2s}
-.sfbtn[data-f="all"].active{background:rgba(255,255,255,0.07);color:var(--white);border-color:rgba(255,255,255,0.2)}
-.sfbtn[data-f="g"].active{background:var(--green-dim);color:var(--green);border-color:var(--green)}
-.sfbtn[data-f="y"].active{background:var(--yellow-dim);color:var(--yellow);border-color:var(--yellow)}
-.sfbtn[data-f="r"].active{background:var(--red-dim);color:var(--red);border-color:var(--red)}
+.sem-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px}
 .sem-name{font-family:var(--cond);font-size:.85rem;font-weight:700;letter-spacing:.05em;color:var(--white);text-transform:uppercase;margin-bottom:3px}
 .sem-txt{font-size:.73rem;color:var(--gray-light);line-height:1.5}
 
 /* SETUPS */
 .setup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:1.3rem}
-.sc{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;position:relative;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
-.sc:hover{border-color:var(--border-mid);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.35)}
+.sc{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;position:relative;overflow:hidden;transition:border-color .2s}
+.sc:hover{border-color:var(--border-mid)}
 .sc-num{position:absolute;top:.9rem;right:1.1rem;font-family:var(--display);font-size:3.2rem;color:rgba(245,166,35,0.06);line-height:1}
 .sc-lbl{font-family:var(--mono);font-size:.57rem;letter-spacing:.18em;color:var(--amber-dim);text-transform:uppercase;margin-bottom:5px}
 .sc-title{font-family:var(--cond);font-size:1.1rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.9rem}
@@ -275,49 +226,49 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .cat-item.hot .cat-n{color:var(--red-mid)}
 .cat-title{font-family:var(--cond);font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.04em;color:var(--white);margin-bottom:3px}
 .cat-desc{font-size:.74rem;color:var(--gray-light);line-height:1.5}
-.footer{padding:3.5rem 5vw 5rem;border-top:1px solid var(--border-mid)}
+.footer{padding:3.5rem 5vw;border-top:1px solid var(--border-mid)}
 .footer-brand{font-family:var(--display);font-size:2.5rem;letter-spacing:.05em;color:var(--amber);margin-bottom:1rem}
 .footer-disclaimer{font-family:var(--mono);font-size:.62rem;color:var(--gray-mid);line-height:1.7;max-width:700px;letter-spacing:.02em}
-/* Copy-ticker button */
-.copy-btn{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:.46rem;letter-spacing:.08em;color:var(--amber-dim);background:transparent;border:none;cursor:pointer;padding:1px 4px;transition:color .15s;vertical-align:middle}
-.copy-btn:hover{color:var(--amber)}
-.copy-btn svg{width:8px;height:8px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round}
-.copy-ok{color:var(--green)!important}
-/* Footer nav */
-.footer-nav{display:flex;gap:20px;margin-top:1.5rem;flex-wrap:wrap}
-.footer-nav a{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--amber-dim);text-decoration:none;text-transform:uppercase;transition:color .2s}
-.footer-nav a:hover{color:var(--amber)}
+
+/* ── LIVE DATA SYSTEM ── */
+.live-bar{position:fixed;bottom:0;left:0;right:0;z-index:700;background:rgba(6,8,11,0.97);backdrop-filter:blur(14px);border-top:1px solid var(--border-mid);padding:0 5vw;height:40px;display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:.58rem;overflow:hidden}
+.live-bar-label{color:var(--amber);letter-spacing:.14em;text-transform:uppercase;flex-shrink:0;font-size:.55rem}
+.live-ticker-wrap{display:flex;gap:0;flex:1;overflow:hidden;position:relative}
+.live-ticker-scroll{display:flex;gap:28px;animation:tickerScroll 40s linear infinite;white-space:nowrap}
+.live-ticker-scroll:hover{animation-play-state:paused}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.lt-item{display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
+.lt-sym{color:var(--amber-dim);letter-spacing:.06em}
+.lt-price{color:var(--white);font-weight:600}
+.lt-chg.up{color:var(--green)}.lt-chg.dn{color:var(--red)}.lt-chg.neu{color:var(--gray-light)}
+.lt-sep{color:var(--border-bright);margin:0 4px}
+.live-refresh-btn{flex-shrink:0;background:transparent;border:1px solid var(--border-mid);color:var(--gray-light);font-family:var(--mono);font-size:.53rem;letter-spacing:.1em;padding:4px 11px;cursor:pointer;text-transform:uppercase;transition:all .2s;display:flex;align-items:center;gap:5px}
+.live-refresh-btn:hover{border-color:var(--amber);color:var(--amber)}
+.live-refresh-btn.loading{opacity:.5;pointer-events:none}
+.live-status{flex-shrink:0;font-size:.52rem;letter-spacing:.1em;display:flex;align-items:center;gap:5px}
+.live-status.ok{color:var(--green)}.live-status.err{color:var(--red)}.live-status.loading{color:var(--amber)}
+.spin{display:inline-block;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* live data injected into existing elements */
+.hs-val[data-live],.d11-new[data-live]{transition:color .3s}
+.live-updated{animation:flashAmber .6s ease}
+@keyframes flashAmber{0%{background:rgba(245,166,35,0.18)}100%{background:transparent}}
+
+/* LIVE DATA PANEL */
+.live-data-panel{background:var(--bg2);border:1px solid var(--border-mid);border-left:3px solid var(--amber);padding:1.2rem 1.4rem;margin:1.5rem 0;display:none}
+.live-data-panel.show{display:block}
+.ldp-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;justify-content:space-between}
+.ldp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.ldp-item{background:var(--bg3);padding:.7rem .8rem;border:1px solid var(--border)}
+.ldp-sym{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;color:var(--amber-dim);text-transform:uppercase;margin-bottom:3px}
+.ldp-price{font-family:var(--mono);font-size:.92rem;font-weight:600;color:var(--white)}
+.ldp-chg{font-family:var(--mono);font-size:.58rem;margin-top:2px}
+.ldp-chg.up{color:var(--green)}.ldp-chg.dn{color:var(--red)}.ldp-chg.neu{color:var(--gray-light)}
+.ldp-note{font-family:var(--mono);font-size:.5rem;color:var(--gray-mid);margin-top:3px}
 </style>
 </head>
 <body>
-
-<div id="progress-bar"></div>
-
-<!-- SECTION DOTS -->
-<div id="section-dots">
-  <div class="s-dot active" data-target="hero" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="s-dot-tip">Top</span></div>
-  <div class="s-dot" data-target="diagnostico" onclick="scrollToSec('diagnostico')"><span class="s-dot-tip">Diagnóstico</span></div>
-  <div class="s-dot" data-target="triple-sec" onclick="scrollToSec('triple-sec')"><span class="s-dot-tip">Triple Crisis</span></div>
-  <div class="s-dot" data-target="charts" onclick="scrollToSec('charts')"><span class="s-dot-tip">Gráficos</span></div>
-  <div class="s-dot" data-target="delta" onclick="scrollToSec('delta')"><span class="s-dot-tip">Δ Comparativa</span></div>
-  <div class="s-dot" data-target="contradicciones" onclick="scrollToSec('contradicciones')"><span class="s-dot-tip">Contradicciones</span></div>
-  <div class="s-dot" data-target="semaforo" onclick="scrollToSec('semaforo')"><span class="s-dot-tip">Semáforo</span></div>
-  <div class="s-dot" data-target="operativa" onclick="scrollToSec('operativa')"><span class="s-dot-tip">Operativa</span></div>
-</div>
-
-<!-- MARKET PULSE BAR -->
-<div id="market-pulse">
-  <div class="pulse-label">Pulse</div>
-  <div class="pulse-items">
-    <div class="pulse-item"><span class="pulse-ticker">BRENT</span><span class="pulse-val a">$88–91</span><span class="pulse-delta dn">▲+4.76%</span></div>
-    <div class="pulse-item"><span class="pulse-ticker">VIX</span><span class="pulse-val r">24.22</span><span class="pulse-delta dn">▼−17.8%</span></div>
-    <div class="pulse-item"><span class="pulse-ticker">NFP</span><span class="pulse-val r">−92K</span><span class="pulse-delta dn">vs +58K</span></div>
-    <div class="pulse-item"><span class="pulse-ticker">ORO</span><span class="pulse-val a">$5,165</span><span class="pulse-delta neu">Táctica</span></div>
-    <div class="pulse-item"><span class="pulse-ticker">US10Y</span><span class="pulse-val r">4.17%</span><span class="pulse-delta dn">▲+3bps</span></div>
-    <div class="pulse-item"><span class="pulse-ticker">HORMUZ</span><span class="pulse-val r">4/día</span><span class="pulse-delta dn">vs 24</span></div>
-  </div>
-  <div class="pulse-alert"><span class="live-dot"></span>DÍA 12 ACTIVO</div>
-</div>
 
 <div class="update-ribbon">
   <span class="ribbon-badge">UPDATE</span>
@@ -334,17 +285,28 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <div class="nav-brand">WAR ROOM</div>
   <div class="nav-badge"><span class="live-dot"></span>AFTER MARKET · 11 MAR · <span id="liveTime">21:00 UTC</span></div>
   <ul class="nav-links">
-    <li><a href="#diagnostico" data-nav="diagnostico">Diagnóstico</a></li>
-    <li><a href="#charts" data-nav="charts">Gráficos 9→11</a></li>
-    <li><a href="#delta" data-nav="delta">Δ Comparativa</a></li>
-    <li><a href="#contradicciones" data-nav="contradicciones">4 Contradicciones</a></li>
-    <li><a href="#semaforo" data-nav="semaforo">Semáforo</a></li>
-    <li><a href="#operativa" data-nav="operativa">Operativa</a></li>
+    <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#charts">Gráficos 9→11</a></li>
+    <li><a href="#delta">Δ Comparativa</a></li>
+    <li><a href="#contradicciones">4 Contradicciones</a></li>
+    <li><a href="#operativa">Operativa</a></li>
   </ul>
 </nav>
 
+<!-- LIVE DATA BAR (bottom ticker) -->
+<div class="live-bar" id="liveBar">
+  <span class="live-bar-label">▶ LIVE</span>
+  <div class="live-ticker-wrap">
+    <div class="live-ticker-scroll" id="tickerScroll">
+      <span class="lt-item"><span class="lt-sym">CARGANDO DATOS</span><span class="lt-price">···</span></span>
+    </div>
+  </div>
+  <div class="live-status loading" id="liveStatus"><span class="spin">◌</span>&nbsp;actualizando</div>
+  <button class="live-refresh-btn" id="refreshBtn" onclick="fetchLiveData()">↻ REFRESH</button>
+</div>
+
 <!-- HERO -->
-<section class="hero" id="hero">
+<section class="hero">
   <div class="hero-grid"></div><div class="hero-glow-r"></div><div class="hero-glow-a"></div>
   <div class="hero-content">
     <div class="day-badge">
@@ -357,7 +319,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <span class="db-item db-current">11 Mar · Triple Convergencia</span>
     </div>
     <div class="alert-chip"><span class="live-dot"></span>TRIPLE CONVERGENCIA · IEA 400M SPR · NFP −92K · HORMUZ BLOQUEADO</div>
-    <div class="hero-eyebrow">After Market · Operation Epic Fury · Day 12 · 21:00 UTC · <span id="readEst"></span></div>
+    <div class="hero-eyebrow">After Market · Operation Epic Fury · Day 12 · 21:00 UTC</div>
     <h1 class="hero-title"><span class="label">11 DE</span><br><span class="day">MARZO</span><br><span class="label">2026</span></h1>
     <div class="hero-sub">El mercado está jugando a que esto termina rápido — Trump dice lo contrario</div>
     <div class="hero-stats">
@@ -370,12 +332,6 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <div class="hs"><div class="hs-label">Hormuz Tránsitos</div><div class="hs-val r">4/día</div><div class="hs-delta dn">vs 24 normal · −83% · Día 5 al 12</div><div class="hs-prev">8M:Día 5 cerrado → 11M:4 tránsitos/día</div></div>
       <div class="hs"><div class="hs-label">ISM Mfg Prices</div><div class="hs-val r">70.5</div><div class="hs-delta dn">▲ vs 60.6 consenso · 8-Mar · Pre-guerra</div><div class="hs-prev">BDTI Tankers: 11M:2,924 · Verde</div></div>
     </div>
-    <div class="hero-cta" onclick="scrollToSec('diagnostico')">
-      <span class="hero-cta-txt">Ver análisis completo</span>
-      <div class="hero-cta-arr">
-        <svg viewBox="0 0 12 12" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v8M2 8l4 4 4-4"/></svg>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -386,7 +342,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 </div>
 
 <!-- TRIPLE CONVERGENCIA -->
-<section class="section" id="triple-sec">
+<section class="section">
   <div class="sec-label">Marco estructural · 11 Mar 2026</div>
   <h2 class="sec-title">CRISIS DE TRIPLE CONVERGENCIA</h2>
   <div class="tc-wrap">
@@ -430,6 +386,17 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <div class="sec-label">Comparativa 3 días</div>
   <h2 class="sec-title">9 → 10 → 11 MARZO</h2>
 
+  <!-- LIVE DATA PANEL -->
+  <div class="live-data-panel show" id="liveDataPanel">
+    <div class="ldp-title">
+      <span>PRECIOS EN TIEMPO REAL <span style="color:var(--gray-mid);font-size:.5rem">(activos con ticker bursátil · datos macro son publicaciones fijas)</span></span>
+      <span id="ldpTimestamp" style="color:var(--gray-mid);font-size:.52rem"></span>
+    </div>
+    <div class="ldp-grid" id="ldpGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+
   <div class="delta11-band">
     <div class="d11-title">EVOLUCIÓN 96H · 8 → 9 → 10 → 11 Marzo</div>
     <div class="delta11-grid">
@@ -464,23 +431,23 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         </tr>
       </thead>
       <tbody>
-        <tr class="changed-row"><td class="t-ticker">Brent BRN1! <button class="copy-btn" onclick="copyTicker('BRENTOIL',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-pos">$92.69</td><td class="t-pos">$98.96</td><td class="t-neg">$87.80</td><td class="t-val">$88–91</td><td><span class="dc dn">▲−4% neto</span></td><td><span class="sig y">⚠ BINARIO</span></td><td class="t-interp">8M: +8.52% · IEA release artificial · Hormuz sigue</td></tr>
-        <tr class="changed-row"><td class="t-ticker">WTI CL1! <button class="copy-btn" onclick="copyTicker('USOIL',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-pos">$90.90</td><td class="t-neg">$82.84*</td><td class="t-neg">$83.45</td><td class="t-val">$88.50</td><td><span class="dc dn">▼ −2.6% neto</span></td><td><span class="sig y">⚠ BINARIO</span></td><td class="t-interp">8M: +12.21% mayor salto año · Backwardation $1.56</td></tr>
-        <tr><td class="t-ticker">VIX <button class="copy-btn" onclick="copyTicker('VIX',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-neg">29.48</td><td class="t-val">27.56</td><td class="t-val">24.92</td><td class="t-neg">24.22</td><td><span class="dc dn">▼ −17.8%</span></td><td><span class="sig r">● PELIGRO</span></td><td class="t-interp">8M: pico +24.07% · Cae mientras guerra escala</td></tr>
+        <tr class="changed-row"><td class="t-ticker">Brent BRN1!</td><td class="t-pos">$92.69</td><td class="t-pos">$98.96</td><td class="t-neg">$87.80</td><td class="t-val">$88–91</td><td><span class="dc dn">▲−4% neto</span></td><td><span class="sig y">⚠ BINARIO</span></td><td class="t-interp">8M: +8.52% · IEA release artificial · Hormuz sigue</td></tr>
+        <tr class="changed-row"><td class="t-ticker">WTI CL1!</td><td class="t-pos">$90.90</td><td class="t-neg">$82.84*</td><td class="t-neg">$83.45</td><td class="t-val">$88.50</td><td><span class="dc dn">▼ −2.6% neto</span></td><td><span class="sig y">⚠ BINARIO</span></td><td class="t-interp">8M: +12.21% mayor salto año · Backwardation $1.56</td></tr>
+        <tr><td class="t-ticker">VIX (CBOE)</td><td class="t-neg">29.48</td><td class="t-val">27.56</td><td class="t-val">24.92</td><td class="t-neg">24.22</td><td><span class="dc dn">▼ −17.8%</span></td><td><span class="sig r">● PELIGRO</span></td><td class="t-interp">8M: pico +24.07% · Cae mientras guerra escala</td></tr>
         <tr><td class="t-ticker">SKEW</td><td class="t-val">~150</td><td class="t-val">151.80</td><td class="t-val">154.46</td><td class="t-neg">154.46</td><td><span class="dc dn">▲ +2.9%</span></td><td><span class="sig r">● ALERTA</span></td><td class="t-interp">Cola izquierda desprotegida · VIX bajo pero SKEW alto</td></tr>
         <tr><td class="t-ticker">Put/Call CPC</td><td class="t-neg">0.96</td><td class="t-val">0.96</td><td class="t-neg">0.82</td><td class="t-neg">0.82</td><td><span class="dc dn">▼ −14.6%</span></td><td><span class="sig r">● ALERTA</span></td><td class="t-interp">8M: coberturas activas · 11M: eliminadas</td></tr>
-        <tr><td class="t-ticker">Oro XAUUSD <button class="copy-btn" onclick="copyTicker('XAUUSD',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-pos">$5,171</td><td class="t-val">$5,137</td><td class="t-pos">$5,242</td><td class="t-val">$5,165</td><td><span class="dc neu">▼ −0.1% neto</span></td><td><span class="sig y">⚠ ACUMULAR</span></td><td class="t-interp">8M: máx histórico +1.77% · Zona táctica $5,150</td></tr>
-        <tr><td class="t-ticker">ES1! S&P 500 <button class="copy-btn" onclick="copyTicker('ES1!',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-neg">6,743 −1.34%</td><td class="t-pos">6,790</td><td class="t-val">6,787</td><td class="t-neg">−0.25%</td><td><span class="dc neu">▲ +0.4% neto</span></td><td><span class="sig r">● ZOMBIE</span></td><td class="t-interp">8M: único día rojo · Desde ahí: complacencia total</td></tr>
-        <tr><td class="t-ticker">NQ1! Nasdaq <button class="copy-btn" onclick="copyTicker('NQ1!',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-neg">24,670 −1.51%</td><td class="t-pos">24,960</td><td class="t-val">24,982</td><td class="t-neg">−0.14%</td><td><span class="dc up">▲ +1.3% neto</span></td><td><span class="sig r">● ZOMBIE</span></td><td class="t-interp">CFTC Nasdaq en mínimo histórico el 8M</td></tr>
+        <tr><td class="t-ticker">Oro XAUUSD</td><td class="t-pos">$5,171</td><td class="t-val">$5,137</td><td class="t-pos">$5,242</td><td class="t-val">$5,165</td><td><span class="dc neu">▼ −0.1% neto</span></td><td><span class="sig y">⚠ ACUMULAR</span></td><td class="t-interp">8M: máx histórico +1.77% · Zona táctica $5,150</td></tr>
+        <tr><td class="t-ticker">ES1! S&P 500</td><td class="t-neg">6,743 −1.34%</td><td class="t-pos">6,790</td><td class="t-val">6,787</td><td class="t-neg">−0.25%</td><td><span class="dc neu">▲ +0.4% neto</span></td><td><span class="sig r">● ZOMBIE</span></td><td class="t-interp">8M: único día rojo · Desde ahí: complacencia total</td></tr>
+        <tr><td class="t-ticker">NQ1! Nasdaq</td><td class="t-neg">24,670 −1.51%</td><td class="t-pos">24,960</td><td class="t-val">24,982</td><td class="t-neg">−0.14%</td><td><span class="dc up">▲ +1.3% neto</span></td><td><span class="sig r">● ZOMBIE</span></td><td class="t-interp">CFTC Nasdaq en mínimo histórico el 8M</td></tr>
         <tr class="changed-row"><td class="t-ticker">ISM Mfg Prices</td><td class="t-neg">70.5</td><td class="t-val">70.5</td><td class="t-val">70.5</td><td class="t-neg">~72</td><td><span class="dc dn">▲ vs 60.6 est.</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: inflación de costos explotando pre-guerra</td></tr>
         <tr class="changed-row"><td class="t-ticker">NFP Feb</td><td class="t-neu">est. +58K</td><td class="t-neu">—</td><td class="t-neu">—</td><td class="t-neg">−92K</td><td><span class="dc dn">▼ MISS 150K</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: consenso +58K · Miss de 150K</td></tr>
         <tr class="changed-row"><td class="t-ticker">CPI Feb</td><td class="t-neu">—</td><td class="t-neu">—</td><td class="t-neu">—</td><td class="t-val">2.4%</td><td><span class="dc neu">≈ En línea</span></td><td><span class="sig y">⚠ TRAMPA</span></td><td class="t-interp">Dato PRE-GUERRA · Mar/Abr serán &gt;3%</td></tr>
         <tr class="changed-row"><td class="t-ticker">Gasolina AAA</td><td class="t-val">$3.00</td><td class="t-val">$3.10</td><td class="t-val">$3.20</td><td class="t-neg">$3.48</td><td><span class="dc dn">▲ +16%</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: $3.00 · Aceleración post-shock energético</td></tr>
-        <tr><td class="t-ticker">US10Y <button class="copy-btn" onclick="copyTicker('US10Y',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-val">4.138%</td><td class="t-pos">4.098%</td><td class="t-neg">4.156%</td><td class="t-neg">4.17%</td><td><span class="dc dn">▲ +3.2bps</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">Sin flight-to-safety · Stagflación activa</td></tr>
-        <tr><td class="t-ticker">US02Y <button class="copy-btn" onclick="copyTicker('US02Y',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-pos">3.556%</td><td class="t-pos">3.542%</td><td class="t-neg">3.592%</td><td class="t-neg">3.61%</td><td><span class="dc dn">▲ +5.4bps</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: −75bps flight-to-safety · 11M: revirtió</td></tr>
-        <tr><td class="t-ticker">DXY <button class="copy-btn" onclick="copyTicker('DXY',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-neg">98.855</td><td class="t-neg">98.734</td><td class="t-val">98.917</td><td class="t-neu">Rango</td><td><span class="dc neu">≈ Plano</span></td><td><span class="sig y">● AMARILLO</span></td><td class="t-interp">8M: −0.21% · Dólar débil en crisis = anomalía</td></tr>
-        <tr><td class="t-ticker">BTC <button class="copy-btn" onclick="copyTicker('BTCUSD',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-pos">$67,404 +0.21%</td><td class="t-pos">+4.74%</td><td class="t-pos">$69,742</td><td class="t-neu">—</td><td><span class="dc up">▲ Especulativo</span></td><td><span class="sig y">● AMARILLO</span></td><td class="t-interp">8M: +0.21% · Mercado no sabía qué hacer</td></tr>
-        <tr><td class="t-ticker">HYG High Yield <button class="copy-btn" onclick="copyTicker('HYG',this)" title="Copiar ticker TradingView"><svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1"/><path d="M8 4V2H1v7h2"/></svg></button></td><td class="t-neg">−0.49%</td><td class="t-pos">+0.60%</td><td class="t-val">80.04</td><td class="t-neg">Spread 3.06%</td><td><span class="dc neu">Contenido</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: NFCICREDIT +25.6% · Spread artificial</td></tr>
+        <tr><td class="t-ticker">US10Y</td><td class="t-val">4.138%</td><td class="t-pos">4.098%</td><td class="t-neg">4.156%</td><td class="t-neg">4.17%</td><td><span class="dc dn">▲ +3.2bps</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">Sin flight-to-safety · Stagflación activa</td></tr>
+        <tr><td class="t-ticker">US02Y</td><td class="t-pos">3.556%</td><td class="t-pos">3.542%</td><td class="t-neg">3.592%</td><td class="t-neg">3.61%</td><td><span class="dc dn">▲ +5.4bps</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: −75bps flight-to-safety · 11M: revirtió</td></tr>
+        <tr><td class="t-ticker">DXY</td><td class="t-neg">98.855</td><td class="t-neg">98.734</td><td class="t-val">98.917</td><td class="t-neu">Rango</td><td><span class="dc neu">≈ Plano</span></td><td><span class="sig y">● AMARILLO</span></td><td class="t-interp">8M: −0.21% · Dólar débil en crisis = anomalía</td></tr>
+        <tr><td class="t-ticker">BTC</td><td class="t-pos">$67,404 +0.21%</td><td class="t-pos">+4.74%</td><td class="t-pos">$69,742</td><td class="t-neu">—</td><td><span class="dc up">▲ Especulativo</span></td><td><span class="sig y">● AMARILLO</span></td><td class="t-interp">8M: +0.21% · Mercado no sabía qué hacer</td></tr>
+        <tr><td class="t-ticker">HYG High Yield</td><td class="t-neg">−0.49%</td><td class="t-pos">+0.60%</td><td class="t-val">80.04</td><td class="t-neg">Spread 3.06%</td><td><span class="dc neu">Contenido</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: NFCICREDIT +25.6% · Spread artificial</td></tr>
         <tr><td class="t-ticker">GDPNow Q1</td><td class="t-neg">2.1%</td><td class="t-val">2.1%</td><td class="t-val">2.1%</td><td class="t-neg">2.1%↓</td><td><span class="dc dn">▼ desde 3.0%</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: cayó 90bps en un dato el 6 Mar</td></tr>
         <tr><td class="t-ticker">Consumer Credit</td><td class="t-neg">$8.05B</td><td class="t-val">$8.05B</td><td class="t-val">$8.05B</td><td class="t-neg">—</td><td><span class="dc dn">▼ vs $12.4B</span></td><td><span class="sig r">● ROJO</span></td><td class="t-interp">8M: consumidor ya se retraía antes de la guerra</td></tr>
         <tr class="changed-row"><td class="t-ticker">BDTI Tankers</td><td class="t-val">~2,750</td><td class="t-val">~2,800</td><td class="t-val">~2,900</td><td class="t-pos">2,924</td><td><span class="dc up">▲ +6.3%</span></td><td><span class="sig g">● VERDE</span></td><td class="t-interp">8M: Hormuz Día 5 · Rutas largas = +revenue</td></tr>
@@ -511,26 +478,20 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <section class="section" id="semaforo">
   <div class="sec-label">Vista general · 11 Mar 2026</div>
   <h2 class="sec-title">SEMÁFORO DE MERCADO</h2>
-  <div class="sem-filter">
-    <button class="sfbtn active" data-f="all" onclick="filterSem('all',this)">Todos <span id="cnt-all"></span></button>
-    <button class="sfbtn" data-f="g" onclick="filterSem('g',this)">Largo / Verde <span id="cnt-g"></span></button>
-    <button class="sfbtn" data-f="y" onclick="filterSem('y',this)">Vigilar / Amarillo <span id="cnt-y"></span></button>
-    <button class="sfbtn" data-f="r" onclick="filterSem('r',this)">Evitar / Rojo <span id="cnt-r"></span></button>
-  </div>
-  <div class="sem-grid" id="semGrid">
-    <div class="sem-card r" data-sem="r"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,26,26,0.6)" stroke="#e84040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#e84040"/></svg></div><div><div class="sem-name">Renta Variable USA (ES, NQ, RTY)</div><div class="sem-txt">Complacencia extrema. NFP −92K + energía + Fed atrapada. Valuaciones insostenibles. Equities zombie.</div></div></div>
-    <div class="sem-card r" data-sem="r"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,26,26,0.6)" stroke="#e84040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#e84040"/></svg></div><div><div class="sem-name">Bonos Largo Plazo (US30Y)</div><div class="sem-txt">Stagflación = yields siguen subiendo. Sin flight-to-safety normal. Curva steepening por las razones equivocadas.</div></div></div>
-    <div class="sem-card r" data-sem="r"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,26,26,0.6)" stroke="#e84040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#e84040"/></svg></div><div><div class="sem-name">HYG / Crédito High Yield</div><div class="sem-txt">Spread 3.06% todavía artificial. Recesión + shock energético = widening inminente.</div></div></div>
-    <div class="sem-card r" data-sem="r"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,26,26,0.6)" stroke="#e84040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#e84040"/></svg></div><div><div class="sem-name">Mercados Emergentes importadores</div><div class="sem-txt">Shock externo brutal. Sin capacidad de absorber energía a $90+. Doble impacto: energía + dólar.</div></div></div>
-    <div class="sem-card r" data-sem="r"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,26,26,0.6)" stroke="#e84040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#e84040"/></svg></div><div><div class="sem-name">Europa</div><div class="sem-txt">Importador neto + estagnación preexistente. Triple golpe: energía cara, manufactura fría, crédito apretado.</div></div></div>
-    <div class="sem-card g" data-sem="g"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(10,61,40,0.6)" stroke="#00d68f" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#00d68f"/></svg></div><div><div class="sem-name">Energía (WTI, Brent, NGAS)</div><div class="sem-txt">Hormuz bloqueado. IEA release temporal (&lt;4 días). Backwardation confirma escasez real. Qatar LNG subestimado.</div></div></div>
-    <div class="sem-card g" data-sem="g"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(10,61,40,0.6)" stroke="#00d68f" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#00d68f"/></svg></div><div><div class="sem-name">T-Bills 3M / 6M</div><div class="sem-txt">3.60% sin riesgo de duración. Reserva táctica ideal mientras se posiciona el portfolio.</div></div></div>
-    <div class="sem-card g" data-sem="g"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(10,61,40,0.6)" stroke="#00d68f" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#00d68f"/></svg></div><div><div class="sem-name">Tankers / Shipping</div><div class="sem-txt">BDTI 2,924. Hormuz cerrado. Salalah fuera. Rutas largas = más días = más revenue. FRO, DHT, INSW.</div></div></div>
-    <div class="sem-card g" data-sem="g"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(10,61,40,0.6)" stroke="#00d68f" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#00d68f"/></svg></div><div><div class="sem-name">Defensa (RTX, LMT, NOC)</div><div class="sem-txt">Guerra "no terminada". $11.3B/semana. B-1B misiones adicionales. Primera refinería USA en 50 años = señal.</div></div></div>
-    <div class="sem-card g" data-sem="g"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(10,61,40,0.6)" stroke="#00d68f" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#00d68f"/></svg></div><div><div class="sem-name">TIPS / Inflación</div><div class="sem-txt">Gasolina +16% en 7 días. CPI Mar/Abr van a ser devastadores. TIPS 5Y: compra obvia no priceada aún.</div></div></div>
-    <div class="sem-card y" data-sem="y"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,64,16,0.6)" stroke="#f0c040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#f0c040"/></svg></div><div><div class="sem-name">Oro — Zona acumulación táctica</div><div class="sem-txt">Anomalía vendedora = oportunidad. $5,150–5,180 entrada. Target $5,350–5,450 cuando pánico real llegue.</div></div></div>
-    <div class="sem-card y" data-sem="y"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,64,16,0.6)" stroke="#f0c040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#f0c040"/></svg></div><div><div class="sem-name">BTC</div><div class="sem-txt">Correlación con activos de riesgo. No hay catalizador claro. Especulativo. No safe haven estructural.</div></div></div>
-    <div class="sem-card y" data-sem="y"><div class="sem-sig"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" fill="rgba(90,64,16,0.6)" stroke="#f0c040" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="#f0c040"/></svg></div><div><div class="sem-name">DXY</div><div class="sem-txt">Debilidad anómala. Capital fluyendo a commodities. Sin dirección clara. Monitorear.</div></div></div>
+  <div class="sem-grid">
+    <div class="sem-card r"><div class="sem-icon">🔴</div><div><div class="sem-name">Renta Variable USA (ES, NQ, RTY)</div><div class="sem-txt">Complacencia extrema. NFP −92K + energía + Fed atrapada. Valuaciones insostenibles. Equities zombie.</div></div></div>
+    <div class="sem-card r"><div class="sem-icon">🔴</div><div><div class="sem-name">Bonos Largo Plazo (US30Y)</div><div class="sem-txt">Stagflación = yields siguen subiendo. Sin flight-to-safety normal. Curva steepening por las razones equivocadas.</div></div></div>
+    <div class="sem-card r"><div class="sem-icon">🔴</div><div><div class="sem-name">HYG / Crédito High Yield</div><div class="sem-txt">Spread 3.06% todavía artificial. Recesión + shock energético = widening inminente.</div></div></div>
+    <div class="sem-card r"><div class="sem-icon">🔴</div><div><div class="sem-name">Mercados Emergentes importadores</div><div class="sem-txt">Shock externo brutal. Sin capacidad de absorber energía a $90+. Doble impacto: energía + dólar.</div></div></div>
+    <div class="sem-card r"><div class="sem-icon">🔴</div><div><div class="sem-name">Europa</div><div class="sem-txt">Importador neto + estagnación preexistente. Triple golpe: energía cara, manufactura fría, crédito apretado.</div></div></div>
+    <div class="sem-card g"><div class="sem-icon">🟢</div><div><div class="sem-name">Energía (WTI, Brent, NGAS)</div><div class="sem-txt">Hormuz bloqueado. IEA release temporal (&lt;4 días). Backwardation confirma escasez real. Qatar LNG subestimado.</div></div></div>
+    <div class="sem-card g"><div class="sem-icon">🟢</div><div><div class="sem-name">T-Bills 3M / 6M</div><div class="sem-txt">3.60% sin riesgo de duración. Reserva táctica ideal mientras se posiciona el portfolio.</div></div></div>
+    <div class="sem-card g"><div class="sem-icon">🟢</div><div><div class="sem-name">Tankers / Shipping</div><div class="sem-txt">BDTI 2,924. Hormuz cerrado. Salalah fuera. Rutas largas = más días = más revenue. FRO, DHT, INSW.</div></div></div>
+    <div class="sem-card g"><div class="sem-icon">🟢</div><div><div class="sem-name">Defensa (RTX, LMT, NOC)</div><div class="sem-txt">Guerra "no terminada". $11.3B/semana. B-1B misiones adicionales. Primera refinería USA en 50 años = señal.</div></div></div>
+    <div class="sem-card g"><div class="sem-icon">🟢</div><div><div class="sem-name">TIPS / Inflación</div><div class="sem-txt">Gasolina +16% en 7 días. CPI Mar/Abr van a ser devastadores. TIPS 5Y: compra obvia no priceada aún.</div></div></div>
+    <div class="sem-card y"><div class="sem-icon">🟡</div><div><div class="sem-name">Oro — Zona acumulación táctica</div><div class="sem-txt">Anomalía vendedora = oportunidad. $5,150–5,180 entrada. Target $5,350–5,450 cuando pánico real llegue.</div></div></div>
+    <div class="sem-card y"><div class="sem-icon">🟡</div><div><div class="sem-name">BTC</div><div class="sem-txt">Correlación con activos de riesgo. No hay catalizador claro. Especulativo. No safe haven estructural.</div></div></div>
+    <div class="sem-card y"><div class="sem-icon">🟡</div><div><div class="sem-name">DXY</div><div class="sem-txt">Debilidad anómala. Capital fluyendo a commodities. Sin dirección clara. Monitorear.</div></div></div>
   </div>
 </section>
 
@@ -585,14 +546,6 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <footer class="footer">
   <div class="footer-brand">WAR ROOM</div>
   <div class="footer-disclaimer">WAR ROOM · After Market · 11 Marzo 2026 · 21:00 UTC · Análisis basado en datos verificados: Reuters, WSJ, Bloomberg, Al Jazeera, BLS, Atlanta Fed, J.P.Morgan. Fuentes: Perplexity AI Research Report 11 Mar 2026.<br><br>DISCLAIMER: Solo para fines informativos y educativos. No constituye asesoramiento financiero. El trading implica riesgo sustancial de pérdida.</div>
-  <div class="footer-nav">
-    <a href="#hero">↑ Volver arriba</a>
-    <a href="#diagnostico">Diagnóstico</a>
-    <a href="#charts">Gráficos</a>
-    <a href="#delta">Δ Comparativa</a>
-    <a href="#semaforo">Semáforo</a>
-    <a href="#operativa">Operativa</a>
-  </div>
 </footer>
 
 <!-- ══════════════════════════════════════════════
@@ -966,83 +919,6 @@ function filterCharts(cat, btn){
   });
 }
 
-// ─── SCROLL PROGRESS + PULSE + DOTS ─────────────────────
-const SECTION_IDS = ['hero','diagnostico','triple-sec','charts','delta','contradicciones','semaforo','operativa'];
-
-window.addEventListener('scroll', onScroll, {passive:true});
-
-function onScroll(){
-  // Progress bar
-  const st = window.scrollY;
-  const dh = document.body.scrollHeight - window.innerHeight;
-  document.getElementById('progress-bar').style.width = (st/dh*100)+'%';
-
-  // Pulse bar: show after hero
-  const heroEl = document.getElementById('hero');
-  const pulse = document.getElementById('market-pulse');
-  if(heroEl && st > heroEl.offsetHeight * 0.5) pulse.classList.add('show');
-  else pulse.classList.remove('show');
-
-  // Active dots + nav
-  const mid = st + window.innerHeight * 0.38;
-  let activeId = SECTION_IDS[0];
-  SECTION_IDS.forEach(id=>{
-    const el = document.getElementById(id);
-    if(el && el.getBoundingClientRect().top + st <= mid) activeId = id;
-  });
-  document.querySelectorAll('.s-dot').forEach(d=>{
-    d.classList.toggle('active', d.dataset.target === activeId);
-  });
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.classList.toggle('active', a.dataset.nav === activeId);
-  });
-}
-
-function scrollToSec(id){
-  const el = document.getElementById(id);
-  if(!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - 86;
-  window.scrollTo({top, behavior:'smooth'});
-}
-
-// ─── SEMÁFORO FILTER ─────────────────────────────────────
-function filterSem(f, btn){
-  document.querySelectorAll('.sfbtn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('#semGrid .sem-card').forEach(c=>{
-    c.style.display=(f==='all'||c.dataset.sem===f)?'':'none';
-  });
-}
-// Count
-(function(){
-  const cnt={all:0,g:0,y:0,r:0};
-  document.querySelectorAll('#semGrid .sem-card').forEach(c=>{
-    const t=c.dataset.sem; cnt[t]=(cnt[t]||0)+1; cnt.all++;
-  });
-  ['all','g','y','r'].forEach(k=>{
-    const el=document.getElementById('cnt-'+k);
-    if(el) el.textContent='('+cnt[k]+')';
-  });
-})();
-
-// ─── COPY TICKER ─────────────────────────────────────────
-function copyTicker(ticker, btn){
-  navigator.clipboard.writeText(ticker).then(()=>{
-    const orig=btn.innerHTML;
-    btn.innerHTML='✓';
-    btn.classList.add('copy-ok');
-    setTimeout(()=>{ btn.innerHTML=orig; btn.classList.remove('copy-ok'); },1500);
-  }).catch(()=>{});
-}
-
-// ─── READ TIME ───────────────────────────────────────────
-(function(){
-  const words = (document.body.innerText||'').split(/\s+/).filter(Boolean).length;
-  const mins = Math.ceil(words/210);
-  const el = document.getElementById('readEst');
-  if(el) el.textContent = '~'+mins+' min lectura';
-})();
-
 // ─── SCROLL REVEAL ───────────────────────────────────────
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
@@ -1059,10 +935,150 @@ function updateTime(){
 }
 updateTime(); setInterval(updateTime,30000);
 
-// ─── INIT ────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded',()=>{
+// ─── LIVE DATA SYSTEM ────────────────────────────────────
+// Activos con ticker Yahoo Finance
+const LIVE_ASSETS = [
+  { sym: 'BZ=F',   label: 'Brent',    fmt: 'price',  prefix: '$',  decimals: 2 },
+  { sym: 'CL=F',   label: 'WTI',      fmt: 'price',  prefix: '$',  decimals: 2 },
+  { sym: 'GC=F',   label: 'Oro',      fmt: 'price',  prefix: '$',  decimals: 0 },
+  { sym: '^GSPC',  label: 'S&P 500',  fmt: 'price',  prefix: '',   decimals: 0 },
+  { sym: '^NDX',   label: 'Nasdaq',   fmt: 'price',  prefix: '',   decimals: 0 },
+  { sym: '^VIX',   label: 'VIX',      fmt: 'price',  prefix: '',   decimals: 2 },
+  { sym: 'DX-Y.NYB', label: 'DXY',   fmt: 'price',  prefix: '',   decimals: 3 },
+  { sym: 'BTC-USD', label: 'BTC',     fmt: 'price',  prefix: '$',  decimals: 0 },
+  { sym: 'HYG',    label: 'HYG',      fmt: 'price',  prefix: '$',  decimals: 2 },
+  { sym: '^TNX',   label: 'US10Y',    fmt: 'pct',    prefix: '',   decimals: 3 },
+  { sym: '^TYX',   label: 'US30Y',    fmt: 'pct',    prefix: '',   decimals: 3 },
+  { sym: '^IRX',   label: 'T-Bill 3M',fmt: 'pct',    prefix: '',   decimals: 3 },
+  { sym: 'NG=F',   label: 'NGAS',     fmt: 'price',  prefix: '$',  decimals: 3 },
+];
+
+// Proxy CORS para Yahoo Finance (gratuito, no requiere API key)
+const YF_PROXY = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+const CORS_PROXY = 'https://corsproxy.io/?';
+
+let liveData = {};
+let lastFetch = null;
+
+async function fetchSingle(asset) {
+  const url = CORS_PROXY + encodeURIComponent(YF_PROXY + asset.sym + '?interval=1d&range=5d');
+  try {
+    const r = await fetch(url, { headers: { 'Accept': 'application/json' } });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    const meta = d?.chart?.result?.[0]?.meta;
+    if (!meta) throw new Error('no meta');
+    const price = meta.regularMarketPrice ?? meta.previousClose;
+    const prev  = meta.chartPreviousClose ?? meta.previousClose;
+    const chgAbs = price - prev;
+    const chgPct = prev ? (chgAbs / prev) * 100 : 0;
+    return { price, chgAbs, chgPct, prev, ok: true };
+  } catch(e) {
+    return { ok: false, error: e.message };
+  }
+}
+
+async function fetchLiveData() {
+  const btn = document.getElementById('refreshBtn');
+  const status = document.getElementById('liveStatus');
+  if (btn) { btn.classList.add('loading'); btn.textContent = '↻ ...'; }
+  if (status) status.innerHTML = '<span class="spin">◌</span>&nbsp;actualizando';
+
+  const results = await Promise.allSettled(LIVE_ASSETS.map(a => fetchSingle(a)));
+
+  let successCount = 0;
+  results.forEach((r, i) => {
+    const asset = LIVE_ASSETS[i];
+    if (r.status === 'fulfilled' && r.value.ok) {
+      liveData[asset.sym] = { ...asset, ...r.value };
+      successCount++;
+    }
+  });
+
+  lastFetch = new Date();
+  renderLiveData();
+
+  if (btn) { btn.classList.remove('loading'); btn.textContent = '↻ REFRESH'; }
+  if (status) {
+    if (successCount > 0) {
+      status.className = 'live-status ok';
+      status.innerHTML = '● ' + successCount + '/' + LIVE_ASSETS.length + ' activos';
+    } else {
+      status.className = 'live-status err';
+      status.innerHTML = '✕ sin datos';
+    }
+  }
+}
+
+function fmtVal(asset, data) {
+  if (!data) return '—';
+  if (asset.fmt === 'pct') return data.price.toFixed(asset.decimals) + '%';
+  return asset.prefix + data.price.toLocaleString('en-US', { minimumFractionDigits: asset.decimals, maximumFractionDigits: asset.decimals });
+}
+
+function fmtChg(data) {
+  if (!data || data.chgPct === undefined) return { text: '—', cls: 'neu' };
+  const sign = data.chgPct >= 0 ? '+' : '';
+  return {
+    text: sign + data.chgPct.toFixed(2) + '%',
+    cls: data.chgPct > 0.05 ? 'up' : data.chgPct < -0.05 ? 'dn' : 'neu'
+  };
+}
+
+function renderLiveData() {
+  // ─── TICKER BAR ───────────────────────────────────────
+  const tickerEl = document.getElementById('tickerScroll');
+  if (tickerEl) {
+    const items = LIVE_ASSETS.filter(a => liveData[a.sym]?.ok);
+    if (items.length > 0) {
+      // duplicate for seamless loop
+      let html = '';
+      for (let pass = 0; pass < 2; pass++) {
+        items.forEach(asset => {
+          const d = liveData[asset.sym];
+          const chg = fmtChg(d);
+          html += `<span class="lt-item">
+            <span class="lt-sym">${asset.label}</span>
+            <span class="lt-price">${fmtVal(asset, d)}</span>
+            <span class="lt-chg ${chg.cls}">${chg.text}</span>
+          </span><span class="lt-sep">·</span>`;
+        });
+      }
+      tickerEl.innerHTML = html;
+    }
+  }
+
+  // ─── LIVE DATA PANEL (tabla detalle) ──────────────────
+  const grid = document.getElementById('ldpGrid');
+  const ts = document.getElementById('ldpTimestamp');
+  if (ts && lastFetch) {
+    ts.textContent = 'Actualizado: ' + lastFetch.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }) + ' hora local';
+  }
+  if (grid) {
+    const items = LIVE_ASSETS.filter(a => liveData[a.sym]?.ok);
+    if (items.length === 0) {
+      grid.innerHTML = '<div style="font-family:var(--mono);font-size:.62rem;color:var(--red);grid-column:1/-1">No se pudieron cargar datos. Verificá tu conexión o hacé click en REFRESH.</div>';
+      return;
+    }
+    grid.innerHTML = items.map(asset => {
+      const d = liveData[asset.sym];
+      const chg = fmtChg(d);
+      const note = asset.fmt === 'pct' ? 'yield' : 'precio spot';
+      return `<div class="ldp-item">
+        <div class="ldp-sym">${asset.label}</div>
+        <div class="ldp-price">${fmtVal(asset, d)}</div>
+        <div class="ldp-chg ${chg.cls}">${chg.text} hoy</div>
+        <div class="ldp-note">${note} · Yahoo Finance</div>
+      </div>`;
+    }).join('');
+  }
+}
+
+// Auto-fetch on load, then every 5 minutes
+document.addEventListener('DOMContentLoaded', () => {
   buildAllCharts();
-  onScroll();
+  fetchLiveData();
+  setInterval(fetchLiveData, 5 * 60 * 1000);
 });
 </script>
 </body>
